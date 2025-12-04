@@ -1,0 +1,31 @@
+{
+  "name": "react-journey",
+  "version": "1.0.0",
+  "description": "Matering React",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SamalAdarsh/React-Journey.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Adarsh Samal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SamalAdarsh/React-Journey/issues"
+  },
+  "homepage": "https://github.com/SamalAdarsh/React-Journey#readme",
+  "devDependencies": {
+    "parcel": "^2.16.1"
+  },
+  "dependencies": {
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1"
+  },
+  "browserlist": [
+    "last 2 versions"
+  ]
+}
