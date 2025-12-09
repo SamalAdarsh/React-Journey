@@ -1,19 +1,27 @@
 import RestaurentCard from "./RestaurentCard";
 import resList from "../utils/mockData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 const Body = () => {
 
 const [listofRestaurents, setlistofRestaurents] = useState(resList);
 
-// const arr = useState(resList);
+useEffect(()=>{
+ fetchData();
+},[]);
 
-// const [listofRestaurents, setlistofRestaurents] = arr;
 
-// const listofRestaurents = arr[0];
+const fetchData = async()=>{
 
-// const setlistofRestaurents = arr[1];
+const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5246091&lng=73.8786239&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+
+const json = await data.json();
+
+console.log(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
+console.log(json);
+setlistofRestaurents(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
+};
 
   return (
     <div className="body">
@@ -28,6 +36,7 @@ const [listofRestaurents, setlistofRestaurents] = useState(resList);
             setlistofRestaurents(filteredlist);
 
             console.log(filteredlist);
+        
           }}
 
           //    onMouseOver={()=>
