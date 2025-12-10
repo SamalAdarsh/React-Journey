@@ -39,14 +39,12 @@ setlistofRestaurents(json.data.cards[4].card.card.gridElements.infoWithStyle.res
         
           }}
 
-          //    onMouseOver={()=>
-          //     console.log("Button was clicked")
-          //   }
+         
         >
           Top Rated Restaurant
         </button>
       </div>
-      {/* <div className="search">Search</div> */}
+    
       <div className="res-container">
         {listofRestaurents.map((restaurent) => (
           <RestaurentCard key={restaurent.info.id} resData={restaurent} />
