@@ -81,3 +81,10 @@
   padding: 0px 20px;
   cursor: pointer;
 }
+
+.filter{
+
+display: flex;
+margin: 10px;
+
+}
