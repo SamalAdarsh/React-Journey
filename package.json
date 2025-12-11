@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Matering React",
   "scripts": {
-    "start":"npx parcel index.html",
+    "start": "npx parcel index.html",
     "build": "npx parcel build index.html",
     "test": "jest"
   },
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/SamalAdarsh/React-Journey#readme",
   "devDependencies": {
+    "@types/react": "^19.2.7",
     "parcel": "^2.16.1"
   },
   "dependencies": {

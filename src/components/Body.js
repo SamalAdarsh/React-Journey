@@ -25,14 +25,14 @@ setlistofRestaurents(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithSty
 };
 
 
-if(listofRestaurents.length === 0){
+// if(listofRestaurents.length === 0){
 
-    // return <h1>Loading.......</h1>
-    return <Shimmer/>
-}
+//     // return <h1>Loading.......</h1>
+//     return <Shimmer/>
+// }
 
 
-  return (
+  return (listofRestaurents.length === 0)? (<Shimmer/>) : (
     <div className="body">
       <div className="filter">
         <button
