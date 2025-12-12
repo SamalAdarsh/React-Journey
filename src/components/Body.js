@@ -18,7 +18,7 @@ console.log("Body Rendered");
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5246091&lng=73.8786239&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://cors-anywhere.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5246091&lng=73.8786239&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
 
     const json = await data.json();
@@ -57,11 +57,11 @@ console.log("Body Rendered");
         <button
           className="filter-btn"
           onClick={() => {
-            const filteredlist = listofRestaurents.filter(
+            const filteredlist = filteredRestaurents.filter(
               (res) => res.info.avgRating > 4.5
             );
 
-            setlistofRestaurents(filteredlist);
+            setfilteredRestaurents(filteredlist);
 
             console.log(filteredlist);
           }}
