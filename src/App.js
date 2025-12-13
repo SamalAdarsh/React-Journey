@@ -6,6 +6,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
+import RestaurentMenu from "./components/RestaurentMenu";
 
 // const styles = {
 
@@ -134,6 +135,11 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+
+       {
+        path: "/restaurents/:resid",
+        element: <RestaurentMenu />,
       },
     ],
     errorElement: <Error />,
