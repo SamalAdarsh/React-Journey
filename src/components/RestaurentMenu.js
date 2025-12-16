@@ -1,16 +1,21 @@
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
-
+import { useParams } from "react-router";
 const RestaurentMenu = () => {
   useEffect(() => {
     fetchMenu();
   }, []);
 
+
+
   const [resInfo, setresInfo] = useState(null);
+
+  const {resId} = useParams();
+
 
   const fetchMenu = async () => {
     const data = await fetch(
-      "https://namastedev.com/api/v1/listRestaurantMenu/123456"
+      "https://namastedev.com/api/v1/listRestaurantMenu/" + resId
     );
 
     //https://api.allorigins.win/raw?url=
@@ -21,39 +26,43 @@ const RestaurentMenu = () => {
 
     const json = await data.json();
 
-    console.log(json);
+
     setresInfo(json.data);
-    console.log(resInfo);
+
   };
 
-  if(resInfo === null)  return <Shimmer />
+  if (resInfo === null) return <Shimmer />;
 
 
-  //   return (resInfo === null) ? (
-  //     <Shimmer />
-  //   ) :
 
-  //  if (resInfo === null) return <Shimmer />;
 
-  //   console.log(resInfo?.cards[2]?.card?.card.info?.name);
 
   const { name, cuisines, costForTwo } =
     resInfo?.cards[2]?.card?.card?.info || {};
 
-console.log(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card)
+  const { itemCards } =
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
+      ?.card || {};
 
-// const {itemCards} = resInfo;
-  return  (
+
+
+  return (
     <div>
       <h1>{name}</h1>
       <p>
-        {cuisines.join(",")} - {costForTwo}
+        {cuisines?.join(",")} - {costForTwo}
       </p>
       <h2>Menu</h2>
       <ul>
-        <li>Pizza</li>
-        <li>Biryani</li>
-        <li>Rolls</li>
+        {/* {itemCards?.map((item) => (
+          <li key={item.card.info.id}>
+            {" "}
+            {item.card.info.name} - {"Rs."} {item.card.info.price / 100}
+          </li>
+        ))} */}
+        <li>{itemCards[0].card.info.name}</li>
+        <li>{itemCards[1].card.info.name}</li>
+        <li>{itemCards[2].card.info.name}</li> 
       </ul>
     </div>
   );
