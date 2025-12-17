@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router";
+import { MENU_API } from "../utils/constants";
 const RestaurentMenu = () => {
   useEffect(() => {
     fetchMenu();
@@ -15,7 +16,7 @@ const RestaurentMenu = () => {
 
   const fetchMenu = async () => {
     const data = await fetch(
-      "https://namastedev.com/api/v1/listRestaurantMenu/" + resId
+      MENU_API + resId
     );
 
     //https://api.allorigins.win/raw?url=
@@ -54,15 +55,15 @@ const RestaurentMenu = () => {
       </p>
       <h2>Menu</h2>
       <ul>
-        {/* {itemCards?.map((item) => (
+        {itemCards?.map((item) => (
           <li key={item.card.info.id}>
             {" "}
             {item.card.info.name} - {"Rs."} {item.card.info.price / 100}
           </li>
-        ))} */}
-        <li>{itemCards[0].card.info.name}</li>
+        ))}
+        {/* <li>{itemCards[0].card.info.name}</li>
         <li>{itemCards[1].card.info.name}</li>
-        <li>{itemCards[2].card.info.name}</li> 
+        <li>{itemCards[2].card.info.name}</li>  */}
       </ul>
     </div>
   );
