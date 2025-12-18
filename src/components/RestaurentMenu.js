@@ -7,7 +7,8 @@ const RestaurentMenu = () => {
     fetchMenu();
   }, []);
 
-
+const [count, setcount] = useState(0);
+console.log(useState());
 
   const [resInfo, setresInfo] = useState(null);
 
