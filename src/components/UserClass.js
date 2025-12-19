@@ -10,14 +10,22 @@ class UserClass extends React.Component {
         count2:2
     }
 
-    console.log(props)
+    console.log("Child Constructor");
   }  
 
+  componentDidMount(){
+ 
+    console.log("Child CDM");
+
+
+}
   
   render() {
 
     const{name,location} = this.props;
     const{count,count2} = this.state;
+
+    console.log("Child Render");
 
     return (
       <div className="user-card">
@@ -34,8 +42,13 @@ class UserClass extends React.Component {
         <h2>Name: {name}</h2>
         <h3>Location: {location}</h3>
         <h4>Contact: adarshsamal2021@gmail.com</h4>
+
+       
       </div>
     );
+ 
+  
+    
   }
 }
 
