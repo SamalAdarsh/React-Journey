@@ -37,8 +37,9 @@ constructor(props){
       <div className="about">
         <h1>This About us Page</h1>
         {/* <User name={"Adarsh(functional)"} location={"Pune(functional)"} /> */}
-        <UserClass name={"First(class)"} location={"Pune(class)"} />
-        <UserClass name={"Second(class)"} location={"Pune(class)"} />
+        {/* <UserClass name={"First(class)"} location={"Pune(class)"} /> */}
+        {/* <UserClass name={"Second(class)"} location={"Pune(class)"} /> */}
+        <User/>
       </div>
     );
   }
