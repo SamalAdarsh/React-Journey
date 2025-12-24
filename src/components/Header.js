@@ -1,46 +1,57 @@
 import { Link } from "react-router";
 import { LOGO_URL } from "../utils/constants";
 import { useState, useEffect } from "react";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
+  // console.log("Header Change")
+  let btnName = "Login";
 
-    // console.log("Header Change")
-    let btnName = "Login";
+  const [btnNameReact, setbtnNameReact] = useState("Login");
 
-    const[btnNameReact, setbtnNameReact] = useState("Login");
+  const onlineStatus = useOnlineStatus();
 
+  useEffect(() => {
+    // console.log("UseEffect is called");
+  }, [btnNameReact]);
+  return (
+    <div className="header">
+      <div className="logo-container">
+        <img className="logo" src={LOGO_URL} />
+      </div>
 
-    useEffect(()=>{
+      <div className="nav-items">
+        <ul>
+          <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
 
-        // console.log("UseEffect is called");
-    },[btnNameReact])
-  return (<div className="header">
-    <div className="logo-container">
-      <img className="logo" src={LOGO_URL} />
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+
+          <li>
+            <Link to="/contact">Contact Us</Link>
+          </li>
+
+          <li>Cart</li>
+
+          <button
+            className="login-btn"
+            onClick={() => {
+              btnNameReact === "Login"
+                ? setbtnNameReact("Logout")
+                : setbtnNameReact("Login");
+              console.log(btnNameReact);
+            }}
+          >
+            {btnNameReact}
+          </button>
+        </ul>
+      </div>
     </div>
-
-    <div className="nav-items">
-      <ul>
-        <li><Link to="/">Home</Link></li>
-
-        <li><Link to="/about">About</Link></li>
-
-        <li><Link to="/contact">Contact Us</Link></li>
-
-        <li>Cart</li>
-
-        <button className="login-btn" onClick = {()=>{
-
-
-          btnNameReact === "Login"
-          ?setbtnNameReact("Logout")
-          :setbtnNameReact("Login");
-          console.log(btnNameReact)
-
-        }}>{btnNameReact}</button>
-      </ul>
-    </div>
-  </div>)
+  );
 };
 
 export default Header;
