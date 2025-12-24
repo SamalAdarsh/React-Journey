@@ -3,6 +3,7 @@ import resList from "../utils/mockData";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
 
@@ -41,6 +42,10 @@ console.log("Body Rendered");
       json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if(onlineStatus === false) return(<h1>You are Offline !!</h1>);
 
   return listofRestaurents.length === 0 ? (
     <Shimmer />
