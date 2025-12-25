@@ -4,48 +4,52 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import uselistofRestaurents from "../utils/uselistofRestaurents";
 
 const Body = () => {
+  console.log("Body Rendered");
 
-console.log("Body Rendered");
-  const [listofRestaurents, setlistofRestaurents] = useState([]);
+  // const [listofRestaurents, setlistofRestaurents] = useState([]);
+
+  const listofRestaurents = uselistofRestaurents();
 
   const [filteredRestaurents, setfilteredRestaurents] = useState([]);
 
   const [searchText, setsearchText] = useState("");
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  useEffect(()=>{
 
-  const fetchData = async () => {
-    // const data = await fetch(
-    //   "https://cors-anywhere.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5246091&lng=73.8786239&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    // );
+    setfilteredRestaurents(listofRestaurents);
 
-       const data = await fetch(
-      "https://namastedev.com/api/v1/listRestaurants"
-    );
+  },[listofRestaurents]);
 
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
-    const json = await data.json();
+  // const fetchData = async () => {
+  //   // const data = await fetch(
+  //   //   "https://cors-anywhere.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5246091&lng=73.8786239&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+  //   // );
 
- 
-    console.log(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  //   const data = await fetch("https://namastedev.com/api/v1/listRestaurants");
 
-   
-    setlistofRestaurents(
-     json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
+  //   const json = await data.json();
 
-    setfilteredRestaurents(
-      json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
+  //   setlistofRestaurents(
+  //     json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        // ?.restaurants
+  //   );
+
+  //   setfilteredRestaurents(
+  //     json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+  //       ?.restaurants
+  //   );
+  // };
 
   const onlineStatus = useOnlineStatus();
 
-  if(onlineStatus === false) return(<h1>You are Offline !!</h1>);
+  if (onlineStatus === false) return <h1>You are Offline !!</h1>;
 
   return listofRestaurents.length === 0 ? (
     <Shimmer />
@@ -53,12 +57,18 @@ console.log("Body Rendered");
     <div className="body">
       <div className="filter">
         <div className="search">
-          <input type="text" className="search-bar" value={searchText} onChange={(e)=> setsearchText(e.target.value)}/>
+          <input
+            type="text"
+            className="search-bar"
+            value={searchText}
+            onChange={(e) => setsearchText(e.target.value)}
+          />
           <button
             onClick={() => {
-
-            const filteredRes  = listofRestaurents.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
-            setfilteredRestaurents(filteredRes);
+              const filteredRes = listofRestaurents.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setfilteredRestaurents(filteredRes);
               console.log(searchText);
             }}
           >
@@ -83,9 +93,13 @@ console.log("Body Rendered");
 
       <div className="res-container">
         {filteredRestaurents.map((restaurent) => (
-
-            <Link key={restaurent.info.id} to={"/restaurents/" +restaurent.info.id } className="restaurent-link"><RestaurentCard  resData={restaurent} /></Link>
-          
+          <Link
+            key={restaurent.info.id}
+            to={"/restaurents/" + restaurent.info.id}
+            className="restaurent-link"
+          >
+            <RestaurentCard resData={restaurent} />
+          </Link>
         ))}
       </div>
     </div>
