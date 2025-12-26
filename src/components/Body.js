@@ -68,7 +68,7 @@ const Body = () => {
         </div>
       </div>
 
-      <div className="res-container grid grid-cols-3 w-[85%] max-w-[1200px] mx-auto my-[30px] gap-[30px] ">
+      <div className="res-container grid grid-cols-3 w-[85%] max-w-300 mx-auto my-7.5 gap-7.5 ">
         {filteredRestaurents.map((restaurent) => (
           <Link
             key={restaurent.info.id}

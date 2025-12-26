@@ -13,7 +13,7 @@ const RestaurentCard = (props) => {
       // }}
     >
       <img
-        className="res-logo w-[100%] h-[70%] py-4 rounded-lg "
+        className="res-logo w-full h-[70%] py-4 rounded-lg "
         alt="res-logo"
         src={CDN_URL + cloudinaryImageId}
       />
