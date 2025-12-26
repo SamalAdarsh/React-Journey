@@ -17,35 +17,9 @@ const Body = () => {
 
   const [searchText, setsearchText] = useState("");
 
-  useEffect(()=>{
-
+  useEffect(() => {
     setfilteredRestaurents(listofRestaurents);
-
-  },[listofRestaurents]);
-
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
-
-  // const fetchData = async () => {
-  //   // const data = await fetch(
-  //   //   "https://cors-anywhere.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5246091&lng=73.8786239&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-  //   // );
-
-  //   const data = await fetch("https://namastedev.com/api/v1/listRestaurants");
-
-  //   const json = await data.json();
-
-  //   setlistofRestaurents(
-  //     json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        // ?.restaurants
-  //   );
-
-  //   setfilteredRestaurents(
-  //     json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-  //       ?.restaurants
-  //   );
-  // };
+  }, [listofRestaurents]);
 
   const onlineStatus = useOnlineStatus();
 
@@ -54,16 +28,17 @@ const Body = () => {
   return listofRestaurents.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="filter">
-        <div className="search">
+    <div className="body bg-cyan-200 ">
+      <div className="flex  items-center">
+        <div className="m-4 p-4">
           <input
             type="text"
-            className="search-bar"
+            className="border border-black bg-amber-50"
             value={searchText}
             onChange={(e) => setsearchText(e.target.value)}
           />
           <button
+            className="px-4 m-4 bg-purple-400 rounded-lg "
             onClick={() => {
               const filteredRes = listofRestaurents.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -75,23 +50,25 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            const filteredlist = filteredRestaurents.filter(
-              (res) => res.info.avgRating > 4.5
-            );
+        <div>
+          <button
+            className="bg-green-500 px-2 py-3 rounded-lg"
+            onClick={() => {
+              const filteredlist = filteredRestaurents.filter(
+                (res) => res.info.avgRating > 4.5
+              );
 
-            setfilteredRestaurents(filteredlist);
+              setfilteredRestaurents(filteredlist);
 
-            console.log(filteredlist);
-          }}
-        >
-          Top Rated Restaurant
-        </button>
+              console.log(filteredlist);
+            }}
+          >
+            Top Rated Restaurant
+          </button>
+        </div>
       </div>
 
-      <div className="res-container">
+      <div className="res-container grid grid-cols-3 w-[85%] max-w-[1200px] mx-auto my-[30px] gap-[30px] ">
         {filteredRestaurents.map((restaurent) => (
           <Link
             key={restaurent.info.id}

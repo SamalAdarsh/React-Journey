@@ -15,32 +15,32 @@ const Header = () => {
     // console.log("UseEffect is called");
   }, [btnNameReact]);
   return (
-    <div className="header">
+    <div className="flex justify-between  p-4 bg-blue-400 items-center sm:bg-green-300 lg:bg-amber-500">
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL} />
+        <img className="w-40" src={LOGO_URL} />
       </div>
 
       <div className="nav-items">
-        <ul>
-          <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
-          <li>
+        <ul className="flex  m-4 p-4 ">
+          <li className="px-4 font-bold">Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
+          <li className="px-4 font-bold">
             <Link to="/">Home</Link>
           </li>
 
-          <li>
+          <li className="px-4 font-bold">
             <Link to="/about">About</Link>
           </li>
 
-          <li>
+          <li className="px-4 font-bold">
             <Link to="/contact">Contact Us</Link>
           </li>
 
           
-          <li>
+          <li className="px-4 font-bold">
             <Link to="/grocery">Grocery</Link>
           </li>
 
-          <li>Cart</li>
+          <li className="px-4 font-bold">Cart</li>
 
           <button
             className="login-btn"
