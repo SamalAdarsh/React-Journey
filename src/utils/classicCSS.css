@@ -3,8 +3,8 @@
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  
   border: 1px solid black;
 }
 
