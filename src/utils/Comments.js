@@ -8,7 +8,20 @@
     //   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.5246091&lng=73.8786239&restaurantId=236455&catalog_qa=undefined&submitAction=ENTER"
     // );
 
+{/* <h2>Menu</h2> */}
+      {/* <ul>
+        {itemCards?.map((item) => (
+          <li key={item.card.info.id}>
+            {" "}
+            {item.card.info.name} - {"Rs."} {item.card.info.price / 100}
+          </li>
+        ))}
+        {/* <li>{itemCards[0].card.info.name}</li>
+        <li>{itemCards[1].card.info.name}</li>
+        <li>{itemCards[2].card.info.name}</li>  */}
+      {/* </ul> */} 
 
+      
 
 // --Body.js
 
@@ -35,3 +48,6 @@
   //       ?.restaurants
   //   );
   // };
+
+
+  
