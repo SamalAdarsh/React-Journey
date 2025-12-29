@@ -1,17 +1,20 @@
-import RestaurentCard from "./RestaurentCard";
+import RestaurentCard, { withPromotedLabel } from "./RestaurentCard";
 import resList from "../utils/mockData";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import uselistofRestaurents from "../utils/uselistofRestaurents";
+import { withPromotedLabel } from "./RestaurentCard";
 
 const Body = () => {
-  console.log("Body Rendered");
-
   // const [listofRestaurents, setlistofRestaurents] = useState([]);
 
   const listofRestaurents = uselistofRestaurents();
+
+  console.log("Body Rendered", listofRestaurents);
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurentCard);
 
   const [filteredRestaurents, setfilteredRestaurents] = useState([]);
 
@@ -75,7 +78,11 @@ const Body = () => {
             to={"/restaurents/" + restaurent.info.id}
             className="restaurent-link"
           >
-            <RestaurentCard resData={restaurent} />
+            {restaurent.info.veg ? (
+              <RestaurantCardPromoted resData={restaurent} />
+            ) : (
+              <RestaurentCard resData={restaurent} />
+            )}
           </Link>
         ))}
       </div>
