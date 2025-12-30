@@ -9,6 +9,8 @@ const RestaurentMenu = () => {
 
   const resInfo = useRestaurentMenu(resId);
 
+  const [showIndex, setShowIndex] = useState(null);
+
   if (resInfo === null) return <Shimmer />;
 
   const { name, cuisines, costForTwo } =
@@ -33,9 +35,15 @@ const RestaurentMenu = () => {
       <p className="font-bold text-lg ">
         {cuisines?.join(",")} - {costForTwo}
       </p>
-      {categories.map((category) => (
-        
-        <RestaurentCategory key={category?.card?.card?.title} data={category?.card?.card} />
+      {categories.map((category,index) => (
+        <RestaurentCategory
+          key={category?.card?.card?.title}
+          data={category?.card?.card}
+          // showItems = {index === showIndex ? true:false}
+           showItems = {index === showIndex}
+          // setShowIndex ={()=>setShowIndex(index)}
+          setShowIndex={() => setShowIndex(index === showIndex ? null : index)}
+        />
       ))}
     </div>
   );
