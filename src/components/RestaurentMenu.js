@@ -5,7 +5,6 @@ import { MENU_API } from "../utils/constants";
 import useRestaurentMenu from "../utils/useRestaurentMenu";
 import RestaurentCategory from "./RestaurentCategory";
 const RestaurentMenu = () => {
-  
   const { resId } = useParams();
 
   const resInfo = useRestaurentMenu(resId);
@@ -34,7 +33,10 @@ const RestaurentMenu = () => {
       <p className="font-bold text-lg ">
         {cuisines?.join(",")} - {costForTwo}
       </p>
-      {categories.map((category)=>(<RestaurentCategory data ={category?.card?.card}/>))}
+      {categories.map((category) => (
+        
+        <RestaurentCategory key={category?.card?.card?.title} data={category?.card?.card} />
+      ))}
     </div>
   );
 };
