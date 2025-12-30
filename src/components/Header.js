@@ -15,7 +15,7 @@ const Header = () => {
     // console.log("UseEffect is called");
   }, [btnNameReact]);
   return (
-    <div className="flex justify-between  p-4 bg-blue-400 items-center sm:bg-green-300 lg:bg-amber-500">
+    <div className="flex justify-between  p-4 bg-blue-400 items-center sm:bg-green-300 lg:bg-amber-400">
       <div className="logo-container">
         <img className="w-40" src={LOGO_URL} />
       </div>

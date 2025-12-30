@@ -1,6 +1,25 @@
 
 
 // -- RestaurentMenu.js
+
+
+// useEffect(() => {
+  //   fetchMenu();
+  // }, []);
+
+  // const [count, setcount] = useState(0);
+  // console.log(useState());
+
+  // const [resInfo, setresInfo] = useState(null);
+
+  // const fetchMenu = async () => {
+  //   const data = await fetch(MENU_API + resId);
+  //   const json = await data.json();
+
+  //   setresInfo(json.data);
+  // };
+
+  
       
           //https://api.allorigins.win/raw?url=
 
@@ -21,7 +40,7 @@
         <li>{itemCards[2].card.info.name}</li>  */}
       {/* </ul> */} 
 
-      
+
 
 // --Body.js
 

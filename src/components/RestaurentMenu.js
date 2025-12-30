@@ -3,23 +3,9 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router";
 import { MENU_API } from "../utils/constants";
 import useRestaurentMenu from "../utils/useRestaurentMenu";
+import RestaurentCategory from "./RestaurentCategory";
 const RestaurentMenu = () => {
-  // useEffect(() => {
-  //   fetchMenu();
-  // }, []);
-
-  // const [count, setcount] = useState(0);
-  // console.log(useState());
-
-  // const [resInfo, setresInfo] = useState(null);
-
-  // const fetchMenu = async () => {
-  //   const data = await fetch(MENU_API + resId);
-  //   const json = await data.json();
-
-  //   setresInfo(json.data);
-  // };
-
+  
   const { resId } = useParams();
 
   const resInfo = useRestaurentMenu(resId);
@@ -48,7 +34,7 @@ const RestaurentMenu = () => {
       <p className="font-bold text-lg ">
         {cuisines?.join(",")} - {costForTwo}
       </p>
-      
+      {categories.map((category)=>(<RestaurentCategory data ={category?.card?.card}/>))}
     </div>
   );
 };
