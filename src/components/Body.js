@@ -8,7 +8,7 @@ import uselistofRestaurents from "../utils/uselistofRestaurents";
 import { withPromotedLabel } from "./RestaurentCard";
 
 const Body = () => {
-  const [listofRestaurents, setlistofRestaurents] = useState([]); // Need to remove it
+  // const [listofRestaurents, setlistofRestaurents] = useState([]); 
 
   const listofRestaurents = uselistofRestaurents();
 

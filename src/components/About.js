@@ -1,6 +1,7 @@
+import UserContext from "../utils/UserContext";
 import User from "./User";
 import UserClass from "./UserClass";
-import {Component} from "react";
+import { Component } from "react";
 
 // const About = () => {
 //   return (
@@ -14,32 +15,31 @@ import {Component} from "react";
 // };
 
 class About extends Component {
-
-constructor(props){
-
+  constructor(props) {
     super(props);
 
-    console.log("Parent Constructor");
+    // console.log("Parent Constructor");
+  }
 
-}
-
-  componentDidMount(){
- 
-    console.log("Parent CDM");
-
-
-}
+  componentDidMount() {
+    // console.log("Parent CDM");
+  }
 
   render() {
-
-     console.log("Parent Render");
+    //  console.log("Parent Render");
     return (
       <div className="about">
         <h1>This About us Page</h1>
+        <div>
+          Logged In User
+          <UserContext.Consumer>
+            {({ loggedInUser }) => <h1>{loggedInUser}</h1>}
+          </UserContext.Consumer>
+        </div>
         {/* <User name={"Adarsh(functional)"} location={"Pune(functional)"} /> */}
         {/* <UserClass name={"First(class)"} location={"Pune(class)"} /> */}
         {/* <UserClass name={"Second(class)"} location={"Pune(class)"} /> */}
-        <User/>
+        <User />
       </div>
     );
   }
