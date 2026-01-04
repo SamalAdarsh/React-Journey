@@ -2,8 +2,8 @@ import { use, useContext } from "react";
 import { CDN_URL } from "../utils/constants";
 import UserContext from "../utils/UserContext";
 
-const RestaurentCard = (props) => {
-  const { resData } = props;
+const RestaurentCard = ({ resData }) => {
+  // const { resData } = props;
   const { cloudinaryImageId, name, cuisines, costForTwo, avgRating,} =
     resData?.info;
   const { deliveryTime } = resData?.info?.sla;
@@ -33,12 +33,12 @@ const RestaurentCard = (props) => {
 
 export const withPromotedLabel = (RestaurentCard)=>{
 
-  return (props)=>{
+  return (resData)=>{
 
     return(<div>
 
       <label className="absolute bg-black text-white m-2 p-2 rounded-lg">Promoted</label>
-      <RestaurentCard {...props}/>
+      <RestaurentCard {...resData }/>
     </div>);
   };
 };
