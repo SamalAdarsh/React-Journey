@@ -3,6 +3,7 @@ import { LOGO_URL } from "../utils/constants";
 import { useState, useEffect, useContext } from "react";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 
 const Header = () => {
@@ -15,6 +16,9 @@ const {loggedInUser}= useContext(UserContext);
   const [btnNameReact, setbtnNameReact] = useState("Login");
 
   const onlineStatus = useOnlineStatus();
+
+  const cartItems = useSelector((store)=>store.cart.items);
+  console.log(cartItems);
 
   useEffect(() => {
     // console.log("UseEffect is called");
@@ -45,7 +49,7 @@ const {loggedInUser}= useContext(UserContext);
             <Link to="/grocery">Grocery</Link>
           </li>
 
-          <li className="px-4 font-bold">Cart</li>
+          <li className="px-4 font-bold text-xl">Cart - ({cartItems.length} Items)</li>
 
           <button
             className="login-btn"

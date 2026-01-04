@@ -9,6 +9,8 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 import RestaurentMenu from "./components/RestaurentMenu";
 import UserContext from "./utils/UserContext";
 import User from "./components/User";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 // import Grocery from "./components/Grocery";
 
 // const styles = {
@@ -127,12 +129,14 @@ const AppLayout = () => {
   }, []);
 
   return (
+    <Provider store={appStore}>
     <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
       <div className="app">
         <Header />
         <Outlet />
       </div>
     </UserContext.Provider>
+    </Provider>
   );
 };
 
