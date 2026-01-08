@@ -6,9 +6,13 @@ const Itemlists = ({ items, dummy }) => {
   // console.log(dummy);
 
   const dispatcher = useDispatch();
-  const handAddItem = () => {
-    dispatcher(addItem("roll"));
+  const handAddItem = (item,e) => {
+
+    e.stopPropagation();
+
+    dispatcher(addItem(item));
   };
+
   return (
     <div>
       {items.map((item) => (
@@ -26,7 +30,7 @@ const Itemlists = ({ items, dummy }) => {
             <div className="absolute bottom-0 ">
               <button
                 className="bg-black text-white p-1 mx-7 rounded-lg shadow-lg"
-                onClick={handAddItem}
+                onClick={(e)=>handAddItem(item,e)}
               >
                 Add +
               </button>
