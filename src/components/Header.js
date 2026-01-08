@@ -5,19 +5,17 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
 
-
 const Header = () => {
   // console.log("Header Change")
   let btnName = "Login";
 
-  
-const {loggedInUser}= useContext(UserContext);
+  const { loggedInUser } = useContext(UserContext);
 
   const [btnNameReact, setbtnNameReact] = useState("Login");
 
   const onlineStatus = useOnlineStatus();
 
-  const cartItems = useSelector((store)=>store.cart.items);
+  const cartItems = useSelector((store) => store.cart.items);
   console.log(cartItems);
 
   useEffect(() => {
@@ -31,7 +29,9 @@ const {loggedInUser}= useContext(UserContext);
 
       <div className="nav-items">
         <ul className="flex  m-4 p-4 ">
-          <li className="px-4 font-bold">Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
+          <li className="px-4 font-bold">
+            Online Status: {onlineStatus ? "🟢" : "🔴"}
+          </li>
           <li className="px-4 font-bold">
             <Link to="/">Home</Link>
           </li>
@@ -44,12 +44,13 @@ const {loggedInUser}= useContext(UserContext);
             <Link to="/contact">Contact Us</Link>
           </li>
 
-          
           <li className="px-4 font-bold">
             <Link to="/grocery">Grocery</Link>
           </li>
 
-          <li className="px-4 font-bold text-xl">Cart - ({cartItems.length} Items)</li>
+          <li className="px-4 font-bold text-xl">
+            <Link to="/cart"> Cart - ({cartItems.length} Items)</Link>
+          </li>
 
           <button
             className="login-btn"
@@ -63,9 +64,7 @@ const {loggedInUser}= useContext(UserContext);
             {btnNameReact}
           </button>
 
-          <li className="px-4 font-bold" >
-            {loggedInUser}
-          </li>
+          <li className="px-4 font-bold">{loggedInUser}</li>
         </ul>
       </div>
     </div>

@@ -11,6 +11,7 @@ import UserContext from "./utils/UserContext";
 import User from "./components/User";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 // import Grocery from "./components/Grocery";
 
 // const styles = {
@@ -172,6 +173,11 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurents/:resId",
         element: <RestaurentMenu />,
+      },
+
+       {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,
