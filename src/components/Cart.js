@@ -1,12 +1,28 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Itemlists from "./Itemlists";
+import { clearCart } from "../utils/cartSlice";
 
 const Cart = () => {
-const cartItems = useSelector((store)=>store.cart.items);
+  const cartItems = useSelector((store) => store.cart.items);
+
+  const dispatcher = useDispatch();
+
+  const handleClearCart = () => {
+    dispatcher(clearCart());
+  };
   return (
     <div className="text-center m-4 p-4">
       <h1 className="text-2xl font-bold">Cart</h1>
-      <div><Itemlists items={cartItems}/></div>
+      <div className=" w-6/12 m-auto">
+        <button
+          className="p-2 m-2 bg-black text-white rounded-lg"
+          onClick={handleClearCart}
+        >
+          Clear Cart
+        </button>
+        {cartItems.length === 0 && (<h1>Cart is empty, Please add some items😅</h1>)}
+        <Itemlists items={cartItems} />
+      </div>
     </div>
   );
 };

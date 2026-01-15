@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 
 const cartSlice = createSlice({
@@ -16,7 +16,13 @@ const cartSlice = createSlice({
             state.items.pop();
         },
         clearCart:(state,action)=>{
+        //   console.log(current(state));
+        //   state= [];
+        //   console.log(state);
+
             state.items.length = 0;
+
+            // return {items: []};
         },
     }
 })
