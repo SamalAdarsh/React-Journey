@@ -40,7 +40,7 @@
     "react-router": "^7.10.1",
     "tailwindcss": "^4.1.18"
   },
-  "browserlist": [
+  "browserslist": [
     "last 2 versions"
   ]
 }
