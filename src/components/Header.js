@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   // console.log("Header Change")
-  let btnName = "Login";
+  // let btnName = "Login";
 
   const { loggedInUser } = useContext(UserContext);
 
