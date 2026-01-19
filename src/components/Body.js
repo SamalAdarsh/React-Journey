@@ -31,8 +31,8 @@ const Body = () => {
 
   if (onlineStatus === false) return <h1>You are Offline !!</h1>;
 
-  // return listofRestaurents.length === 0 ? (
-  return (listofRestaurents?.length || 0) === 0 ? (
+  return listofRestaurents.length === 0 ? (
+  // return (listofRestaurents?.length || 0) === 0 ? (
     <Shimmer />
   ) : (
     <div className="body bg-cyan-200 ">
@@ -40,6 +40,7 @@ const Body = () => {
         <div className="m-4 p-4">
           <input
             type="text"
+            data-testid = "SearchInput"
             className="border border-black bg-amber-50"
             value={searchText}
             onChange={(e) => setsearchText(e.target.value)}

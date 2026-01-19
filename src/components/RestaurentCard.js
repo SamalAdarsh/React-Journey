@@ -12,10 +12,8 @@ const RestaurentCard = ({ resData }) => {
   const { loggedInUser } = useContext(UserContext);
   return (
     <div
-      className="m-4 p-4  w-[80%] h-[90%] bg-gray-200 hover:bg-gray-400 rounded-lg"
-      // style={{
-      //   backgroundColor: "#f0f0f0",
-      // }}
+     data-testid="resCard" className="m-4 p-4  w-[80%] h-[90%] bg-gray-200 hover:bg-gray-400 rounded-lg"
+      
     >
       <img
         className="res-logo w-full h-[70%] py-4 rounded-lg "
