@@ -5,7 +5,7 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import uselistofRestaurents from "../utils/uselistofRestaurents";
-import { withPromotedLabel } from "./RestaurentCard";
+// import { withPromotedLabel } from "./RestaurentCard";
 import UserContext from "../utils/UserContext";
 
 const Body = () => {
@@ -31,7 +31,8 @@ const Body = () => {
 
   if (onlineStatus === false) return <h1>You are Offline !!</h1>;
 
-  return listofRestaurents.length === 0 ? (
+  // return listofRestaurents.length === 0 ? (
+  return (listofRestaurents?.length || 0) === 0 ? (
     <Shimmer />
   ) : (
     <div className="body bg-cyan-200 ">

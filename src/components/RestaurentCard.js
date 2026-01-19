@@ -4,12 +4,12 @@ import UserContext from "../utils/UserContext";
 
 const RestaurentCard = ({ resData }) => {
   // const { resData } = props;
-  console.log(resData);
-  const { cloudinaryImageId, name, cuisines, costForTwo, avgRating,} =
+  // console.log(resData);
+  const { cloudinaryImageId, name, cuisines, costForTwo, avgRating } =
     resData?.info;
   const { deliveryTime } = resData?.info?.sla;
 
-  const{loggedInUser}= useContext(UserContext);
+  const { loggedInUser } = useContext(UserContext);
   return (
     <div
       className="m-4 p-4  w-[80%] h-[90%] bg-gray-200 hover:bg-gray-400 rounded-lg"
@@ -27,20 +27,21 @@ const RestaurentCard = ({ resData }) => {
       <h4>{costForTwo}</h4>
       <h4>{avgRating} stars</h4>
       <h4>{deliveryTime} mins </h4>
-       <h4>User: {loggedInUser}  </h4>
+      <h4>User: {loggedInUser} </h4>
     </div>
   );
 };
 
-export const withPromotedLabel = (RestaurentCard)=>{
-
-  return (resData)=>{
-
-    return(<div>
-
-      <label className="absolute bg-black text-white m-2 p-2 rounded-lg">Promoted</label>
-      <RestaurentCard {...resData }/>
-    </div>);
+export const withPromotedLabel = (RestaurentCard) => {
+  return (resData) => {
+    return (
+      <div>
+        <label className="absolute bg-black text-white m-2 p-2 rounded-lg">
+          Promoted
+        </label>
+        <RestaurentCard {...resData} />
+      </div>
+    );
   };
 };
 
