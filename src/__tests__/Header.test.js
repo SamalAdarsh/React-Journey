@@ -63,6 +63,9 @@ test("Checking for cart-items", () => {
 
   const logoutButton = screen.getByRole("button",{name:"Logout"});
 
+  fireEvent.click(logoutButton);
+
+
 
   expect(logoutButton).toBeInTheDocument();
 });

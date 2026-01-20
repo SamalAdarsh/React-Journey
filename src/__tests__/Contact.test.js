@@ -4,24 +4,24 @@ import "@testing-library/jest-dom";
 
 describe("Test Cases for contact page",()=>{
 
-beforeAll(()=>{
-    console.log("Before All");
-});
+// beforeAll(()=>{
+//     console.log("Before All");
+// });
 
-beforeEach(()=>{
-    console.log("Before Each");
-})
+// beforeEach(()=>{
+//     console.log("Before Each");
+// })
 
 
-afterAll(()=>{
+// afterAll(()=>{
 
-    console.log("After All");
-})
+//     console.log("After All");
+// })
 
-afterEach(()=>{
+// afterEach(()=>{
 
-    console.log("After Each");
-})
+//     console.log("After Each");
+// })
 
 
 it("Checking whether the contact page loaded" , ()=>{

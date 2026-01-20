@@ -31,7 +31,7 @@ const Body = () => {
 
   if (onlineStatus === false) return <h1>You are Offline !!</h1>;
 
-  return listofRestaurents.length === 0 ? (
+  return listofRestaurents?.length === 0 ? (
   // return (listofRestaurents?.length || 0) === 0 ? (
     <Shimmer />
   ) : (
@@ -77,7 +77,7 @@ const Body = () => {
 
         <div className="mx-6" >
           <label>User : </label>
-          <input className="border border-black bg-amber-50 "
+          <input data-testid="userNameInput" className="border border-black bg-amber-50 "
           value={loggedInUser}
           onChange={(e)=>setUserName(e.target.value)}
           />
@@ -85,7 +85,7 @@ const Body = () => {
       </div>
 
       <div className="res-container grid grid-cols-3 w-[85%] max-w-300 mx-auto my-7.5 gap-7.5 ">
-        {filteredRestaurents.map((restaurent) => (
+        {(filteredRestaurents || []).map((restaurent) => (
           <Link
             key={restaurent.info.id}
             to={"/restaurents/" + restaurent.info.id}
