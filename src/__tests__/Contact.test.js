@@ -3,6 +3,27 @@ import Contact from "../components/Contact";
 import "@testing-library/jest-dom";
 
 describe("Test Cases for contact page",()=>{
+
+beforeAll(()=>{
+    console.log("Before All");
+});
+
+beforeEach(()=>{
+    console.log("Before Each");
+})
+
+
+afterAll(()=>{
+
+    console.log("After All");
+})
+
+afterEach(()=>{
+
+    console.log("After Each");
+})
+
+
 it("Checking whether the contact page loaded" , ()=>{
 
     render(<Contact/>);
@@ -46,7 +67,7 @@ test("Checking multiple elements", ()=>{
 
     const inputBoxes = screen.getAllByRole("textbox");
 
-    console.log(inputBoxes.length);
+    // console.log(inputBoxes.length);
 
     // expect(inputBoxes).toBeInTheDocument();
 

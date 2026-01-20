@@ -37,3 +37,29 @@ it("Should search Res List for Spice input", async () => {
 //   expect(searchBtn).toBeInTheDocument();
 expect(cardsAfter.length).toBe(2);
 });
+
+
+it("Should display Top Rated Res Only", async ()=>{
+
+
+    await act(async () =>
+    
+        render(<BrowserRouter>
+        <Body/>
+        </BrowserRouter>)
+    );
+
+    const cardsBeforeFilter = screen.getAllByTestId("resCard");
+
+    expect(cardsBeforeFilter.length).toBe(9);
+
+    const TopBtn = screen.getByRole("button",{name:"Top Rated Restaurant"})
+
+    fireEvent.click(TopBtn);
+
+    const cardsAfterFilter = screen.getAllByTestId("resCard");
+
+    expect(cardsAfterFilter.length).toBe(3);
+
+
+})
